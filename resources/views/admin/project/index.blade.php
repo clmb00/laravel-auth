@@ -29,7 +29,11 @@
                             <div class="d-flex gap-2 align-items-center" style="height: 50px">
                                 <a class="btn btn-success" href="{{ route('admin.projects.show', $project->slug) }}"><i class="fa-solid fa-circle-info"></i></a>
                                 <a class="btn btn-warning" href="{{ route('admin.projects.edit', $project->slug) }}"><i class="fa-solid fa-file-pen"></i></a>
-                                <a class="btn btn-danger" href=""><i class="fa-solid fa-trash"></i></a>
+                                <form action="{{ route('admin.projects.destroy', $project) }}" method="POST" onsubmit="return confirm('Confermi l\'eliminazione di: {{$project->name}}')">
+                                    @csrf
+                                    @method('DELETE')
+                                    <button class="btn btn-danger" type="submit" title="delete"><i class="fa-solid fa-trash"></i></button>
+                                </form>
                             </div>
                         </td>
                     </tr>
