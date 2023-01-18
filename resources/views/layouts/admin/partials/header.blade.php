@@ -7,7 +7,7 @@
                     MyDashboard
                 </a>
             @else
-                <h4 class="ms-4">Welcome back, Name!</h4>
+                <h4 class="ms-4">Welcome back, {{ Auth::user()->name }}!</h4>
             @endguest
 
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
