@@ -68,9 +68,12 @@ class ProjectController extends Controller
      * @param  \App\Models\Project  $project
      * @return \Illuminate\Http\Response
      */
-    public function edit(Project $project)
+    public function edit($slug)
     {
-        //
+
+        $project = Project::where('slug', $slug)->first();
+
+        return view('admin.project.edit', compact('project'));
     }
 
     /**
@@ -82,7 +85,17 @@ class ProjectController extends Controller
      */
     public function update(Request $request, Project $project)
     {
-        //
+        $form_data = $request->all();
+
+        if($form_data['name'] != $project->name){
+            $form_data['slug'] = Project::generate_slug($form_data['name']);
+        } else {
+            $form_data['slug'] = $project->slug;
+        }
+
+        $project->update($form_data);
+
+        return view('admin.project.show', compact('project'));
     }
 
     /**
