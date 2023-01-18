@@ -13,10 +13,18 @@
         </div>
         <div class="d-flex gap-1" style="width: 80%;">
             <li class="nav-item btn btn-outline-light btn-lg" style="width: 54px;">
-                <a class="nav-link" href="{{ url('/admin/projects') }}"><i class="fa-solid fa-database"></i></a>
+                <a class="nav-link" href="{{ url('/admin/projects') }}"><i class="fa-solid fa-file-lines"></i></a>
             </li>
             <li class="nav-item btn btn-outline-light btn-lg w-100">
                 <a class="nav-link" href="{{ url('/admin/projects') }}">Projects</a>
+            </li>
+        </div>
+        <div class="d-flex gap-1" style="width: 80%;">
+            <li class="nav-item btn btn-outline-light btn-lg" style="width: 54px;">
+                <a class="nav-link" href="{{ route('admin.projects.create') }}"><i class="fa-solid fa-file-circle-plus"></i></a>
+            </li>
+            <li class="nav-item btn btn-outline-light btn-lg w-100">
+                <a class="nav-link" href="{{ route('admin.projects.create') }}">New Project</a>
             </li>
         </div>
         <div class="d-flex gap-1" style="width: 80%;">
