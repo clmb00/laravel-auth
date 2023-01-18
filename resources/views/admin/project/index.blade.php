@@ -27,7 +27,7 @@
                         </td>
                         <td>
                             <div class="d-flex gap-2 align-items-center" style="height: 50px">
-                                <a class="btn btn-success" href=""><i class="fa-solid fa-circle-info"></i></a>
+                                <a class="btn btn-success" href="{{ route('admin.projects.show', $project->slug) }}"><i class="fa-solid fa-circle-info"></i></a>
                                 <a class="btn btn-warning" href=""><i class="fa-solid fa-file-pen"></i></a>
                                 <a class="btn btn-danger" href=""><i class="fa-solid fa-trash"></i></a>
                             </div>
