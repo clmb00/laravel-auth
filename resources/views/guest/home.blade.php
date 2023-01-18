@@ -1,5 +1,7 @@
-@extends('layouts.guest')
+@extends('layouts.guest.guest')
 
 @section('content')
-    <h1>Home!</h1>
+    <div class="container-fluid">
+        <h1>Pagina Pubblica</h1>
+    </div>
 @endsection
