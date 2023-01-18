@@ -1,1 +1,31 @@
-@import '~bootstrap/scss/bootstrap'
+@import '~bootstrap/scss/bootstrap';
+
+// Header
+header{
+    height: 80px;
+}
+
+.my_text:hover{
+    color: white;
+}
+
+.btn_logout{
+    position: relative;
+    margin-left: 40px;
+    &::before{
+        content: '';
+        display: inline-block;
+        height: 80px;
+        width: 1px;
+        background-color: lightgray;
+        position: absolute;
+        top: -18px;
+        left: -20px;
+    }
+    &:hover a{
+        color: white !important;
+    }
+}
+
+
+// Aside

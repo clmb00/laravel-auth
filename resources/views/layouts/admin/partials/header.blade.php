@@ -1,9 +1,14 @@
 <header>
-    <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
-        <div class="container">
-            <a class="navbar-brand d-flex align-items-center" href="{{ url('/') }}">
-                {{-- config('app.name', 'Laravel') --}}
-            </a>
+    <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm h-100">
+        <div class="container-fluid">
+
+            @guest
+                <a class="navbar-brand d-flex align-items-center fs-4" href="{{ url('/') }}">
+                    MyDashboard
+                </a>
+            @else
+                <h4 class="ms-4">Welcome back, Name!</h4>
+            @endguest
 
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
                 <span class="navbar-toggler-icon"></span>
@@ -11,42 +16,39 @@
 
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <!-- Left Side Of Navbar -->
-                <ul class="navbar-nav me-auto">
-                    <li class="nav-item">
-                        <a class="nav-link" href="{{url('/') }}">{{ __('Home') }}</a>
-                    </li>
-                </ul>
+                <ul class="navbar-nav me-auto"></ul>
 
                 <!-- Right Side Of Navbar -->
                 <ul class="navbar-nav ml-auto">
                     <!-- Authentication Links -->
                     @guest
-                    <li class="nav-item">
-                        <a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>
-                    </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>
+                        </li>
+
                     @if (Route::has('register'))
-                    <li class="nav-item">
-                        <a class="nav-link" href="{{ route('register') }}">{{ __('Register') }}</a>
-                    </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ route('register') }}">{{ __('Register') }}</a>
+                        </li>
                     @endif
+
                     @else
-                    <li class="nav-item dropdown">
-                        <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
-                            {{ Auth::user()->name }}
-                        </a>
 
-                        <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-                            <a class="dropdown-item" href="{{ route('admin.dashboard') }}">{{__('Dashboard')}}</a>
-                            <a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault();
-                                                 document.getElementById('logout-form').submit();">
-                                {{ __('Logout') }}
+                        <li class="nav-item btn btn-light btn-sm me-2" style="--bs-btn-padding-y: .125rem; --bs-btn-padding-x: .25rem; --bs-btn-font-size: 1rem;">
+                            <a class="nav-link" href="{{url('/') }}"><i class="fa-solid fa-bell"></i></i> Notifications</a>
+                        </li>
+                        <li class="nav-item btn btn-light btn-sm" style="--bs-btn-padding-y: .125rem; --bs-btn-padding-x: .25rem; --bs-btn-font-size: 1rem;">
+                            <a class="nav-link" href="{{url('/') }}"><i class="fa-solid fa-globe"></i> View Public Page</a>
+                        </li>
+                        <li class="nav-item btn_logout btn btn-outline-danger border-0 btn-sm" style="--bs-btn-padding-y: .125rem; --bs-btn-padding-x: .25rem; --bs-btn-font-size: 1rem;">
+                            <a class="nav-link text-danger" href="{{ route('logout') }}"
+                            onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
+                                Logout
                             </a>
-
                             <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
                                 @csrf
                             </form>
-                        </div>
-                    </li>
+                        </li>
                     @endguest
                 </ul>
             </div>
