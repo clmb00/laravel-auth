@@ -23,18 +23,26 @@
 
 <body>
 
-    <div class="row">
-        <div class="col-2"></div>
-        <div class="@auth col-10 @endauth">
-            @include('layouts.admin.partials.header')
+    <div class="row mx-0">
+        @auth
+            <div class="col-2 px-0">
+
+                    @include('layouts.admin.partials.aside')
+
+            </div>
+            <div class="col-10 px-0" id="app">
+        @else
+            <div id='app'>
+        @endauth
+            <div>
+                @include('layouts.admin.partials.header')
+            </div>
+            <main class="mt-4">
+                @yield('content')
+            </main>
         </div>
     </div>
 
-    <div id="app">
-        <main class="">
-            @yield('content')
-        </main>
-    </div>
 </body>
 
 </html>
