@@ -7,7 +7,7 @@
                     MyDashboard
                 </a>
             @else
-                <h4 class="ms-4">Welcome back, {{ Auth::user()->name }}!</h4>
+                <h4 class="ms-1">Welcome back, {{ Auth::user()->name }}!</h4>
             @endguest
 
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
@@ -40,7 +40,7 @@
                         <li class="nav-item btn btn-light btn-sm" style="--bs-btn-padding-y: .125rem; --bs-btn-padding-x: .25rem; --bs-btn-font-size: 1rem;">
                             <a class="nav-link" href="{{url('/') }}"><i class="fa-solid fa-globe"></i> View Public Page</a>
                         </li>
-                        <li class="nav-item btn_logout btn btn-outline-danger border-0 btn-sm" style="--bs-btn-padding-y: .125rem; --bs-btn-padding-x: .25rem; --bs-btn-font-size: 1rem;">
+                        <li class="nav-item btn_logout btn btn-outline-danger btn-sm" style="--bs-btn-padding-y: .125rem; --bs-btn-padding-x: .25rem; --bs-btn-font-size: 1rem;">
                             <a class="nav-link text-danger" href="{{ route('logout') }}"
                             onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
                                 Logout
