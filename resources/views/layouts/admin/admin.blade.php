@@ -37,7 +37,7 @@
             <div>
                 @include('layouts.admin.partials.header')
             </div>
-            <main class="mt-4">
+            <main class="py-4 overflow-auto" style="max-height: calc(100vh - 80px)">
                 @yield('content')
             </main>
         </div>

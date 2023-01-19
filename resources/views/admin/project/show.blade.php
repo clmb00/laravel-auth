@@ -19,10 +19,14 @@
             <a class="btn btn-primary w-100" href="{{ route('admin.projects.index') }}"><i class="fa-solid fa-left-long"></i> Back</a>
         </div>
         <div class="col-4">
-            <a class="btn btn-warning w-100" href="{{ route('admin.projects.index') }}"><i class="fa-solid fa-file-pen"></i> Edit</a>
+            <a class="btn btn-warning w-100" href="{{ route('admin.projects.edit', $project->slug) }}"><i class="fa-solid fa-file-pen"></i> Edit</a>
         </div>
         <div class="col-4">
-            <a class="btn btn-danger w-100" href="{{ route('admin.projects.index') }}"><i class="fa-solid fa-trash"></i> Cancel</a>
+            <form action="{{ route('admin.projects.destroy', $project) }}" method="POST" onsubmit="return confirm('Confermi l\'eliminazione di: {{$project->name}}')">
+                @csrf
+                @method('DELETE')
+                <button class="btn btn-danger w-100" type="submit" title="delete"><i class="fa-solid fa-trash"></i> Cancel</button>
+            </form>
         </div>
     </div>
 </div>
