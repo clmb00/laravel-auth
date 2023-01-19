@@ -17,4 +17,8 @@ class DashboardController extends Controller
 
         return view('admin.home', compact('number_of_proj', 'last_project'));
     }
+
+    public function profile(){
+        return view('admin.profile');
+    }
 }

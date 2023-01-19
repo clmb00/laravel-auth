@@ -35,7 +35,7 @@
                     @else
 
                         <li class="nav-item btn btn-light btn-sm me-2" style="--bs-btn-padding-y: .125rem; --bs-btn-padding-x: .25rem; --bs-btn-font-size: 1rem;">
-                            <a class="nav-link" href="{{url('/') }}"><i class="fa-solid fa-bell"></i></i> Notifications</a>
+                            <a class="nav-link" href="{{ url('/admin/profile') }}"><i class="fa-solid fa-bell"></i></i> Notifications</a>
                         </li>
                         <li class="nav-item btn btn-light btn-sm" style="--bs-btn-padding-y: .125rem; --bs-btn-padding-x: .25rem; --bs-btn-font-size: 1rem;">
                             <a class="nav-link" href="{{url('/') }}"><i class="fa-solid fa-globe"></i> View Public Page</a>
