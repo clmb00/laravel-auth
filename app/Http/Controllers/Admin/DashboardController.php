@@ -3,11 +3,18 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Models\Project;
 use Illuminate\Http\Request;
 
 class DashboardController extends Controller
 {
     public function index(){
-        return view('admin.home');
+
+        $projects = Project::all();
+        $number_of_proj = count($projects);
+
+        $last_project = Project::orderBy('id', 'desc')->first();
+
+        return view('admin.home', compact('number_of_proj', 'last_project'));
     }
 }
