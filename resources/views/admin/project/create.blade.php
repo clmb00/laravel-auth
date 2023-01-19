@@ -16,7 +16,7 @@
             </div>
             <div class="mb-3">
                 <label for="summary" class="form-label">Summary</label>
-                <input type="text" class="form-control" id="summary" name="summary">
+                <textarea id="summary" name="summary"></textarea>
             </div>
             <div class="mb-3">
                 <label for="cover_image" class="form-label">Cover image URL</label>
@@ -36,4 +36,17 @@
         </form>
 
     </div>
+
+    <script>
+        ClassicEditor
+            .create( document.querySelector( '#summary' ), {
+                toolbar: ['heading', '|', 'bold', 'italic', 'link', 'bulletedList', 'numberedList', '|', 'outdent', 'indent', '|', 'blockQuote', 'insertTable', '|', 'undo', 'redo' ]
+            } )
+            .then( editor => {
+                console.log( editor );
+            } )
+           .catch( error => {
+                console.error( error );
+            } );
+    </script>
 @endsection

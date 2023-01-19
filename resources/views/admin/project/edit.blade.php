@@ -17,7 +17,7 @@
             </div>
             <div class="mb-3">
                 <label for="summary" class="form-label">Summary</label>
-                <input type="text" class="form-control" id="summary" name="summary" value="{{$project->summary}}">
+                <textarea id="summary" name="summary" value="{{$project->summary}}"></textarea>
             </div>
             <div class="mb-3">
                 <label for="cover_image" class="form-label">Cover image URL</label>
@@ -28,13 +28,30 @@
                     <a class="btn btn-primary w-100" href="{{ route('admin.projects.index') }}"><i class="fa-solid fa-left-long"></i> Back</a>
                 </div>
                 <div class="col-4">
-                    <a class="btn btn-danger w-100" href="{{ route('admin.projects.index') }}"><i class="fa-solid fa-trash-can"></i> Delete</a>
+                    <form action="{{ route('admin.projects.destroy', $project) }}" method="POST" onsubmit="return confirm('Confermi l\'eliminazione di: {{$project->name}}')"">
+                        @csrf
+                        @method('DELETE')
+                        <button class="btn btn-danger w-100" type="submit" title="delete"><i class="fa-solid fa-trash"></i></button>
+                    </form>
                 </div>
                 <div class="col-4">
-                    <button type="submit" class="btn btn-success w-100"><i class="fa-solid fa-file-pen"></i> Edit</button>
+                    <button type="submit" class="btn btn-success w-100"><i class="fa-solid fa-file-pen"></i> Done</button>
                 </div>
             </div>
         </form>
 
     </div>
+
+<script>
+    ClassicEditor
+        .create( document.querySelector( '#summary' ), {
+            toolbar: ['heading', '|', 'bold', 'italic', 'link', 'bulletedList', 'numberedList', '|', 'outdent', 'indent', '|', 'blockQuote', 'insertTable', '|', 'undo', 'redo' ]
+        } )
+        .then( editor => {
+            console.log( editor );
+        } )
+       .catch( error => {
+            console.error( error );
+        } );
+</script>
 @endsection
