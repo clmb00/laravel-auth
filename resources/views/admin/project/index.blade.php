@@ -7,9 +7,21 @@
         <table class="table table-striped table-hover table-bordered" style="border-color:rgba(71, 37, 95, 0.4);">
             <thead class="text-white" style="background-color: rgba(71, 37, 95, 0.6);">
               <tr>
-                <th scope="col">ID</th>
-                <th scope="col">Name</th>
-                <th scope="col">Client Name</th>
+                <th scope="col" class="text-decoration-underline">
+                    <a class="nav-link" href="{{ route('admin.projects.orderby', ['column'=>'id', 'direction'=>$direction]) }}">
+                        ID @if ($active_order == 'id') @if ($direction == 'desc') <i class='fa-solid fa-chevron-up'></i> @else <i class="fa-solid fa-chevron-down"></i> @endif @endif
+                    </a>
+                </th>
+                <th scope="col" class="text-decoration-underline">
+                    <a class="nav-link" href="{{ route('admin.projects.orderby', ['column'=>'name', 'direction'=>$direction]) }}">
+                        Name @if ($active_order == 'name') @if ($direction == 'desc') <i class="fa-solid fa-chevron-up"></i> @else <i class="fa-solid fa-chevron-down"></i> @endif @endif
+                    </a>
+                </th>
+                <th scope="col" class="text-decoration-underline">
+                    <a class="nav-link" href="{{ route('admin.projects.orderby', ['column'=>'client_name', 'direction'=>$direction]) }}">
+                        Client Name @if ($active_order == 'client_name') @if ($direction == 'desc') <i class="fa-solid fa-chevron-up"></i> @else <i class="fa-solid fa-chevron-down"></i> @endif @endif
+                    </a>
+                </th>
                 <th scope="col">Summary</th>
                 <th scope="col">Actions</th>
               </tr>
@@ -17,7 +29,7 @@
             <tbody class="table-hover">
                 @forelse ($projects as $project)
                     <tr class="rows">
-                        <td>{{ $project->id }}</td>
+                        <td style="min-width: 55px">{{ $project->id }}</td>
                         <td>{{ $project->name }}</td>
                         <td>{{ $project->client_name }}</td>
                         <td>

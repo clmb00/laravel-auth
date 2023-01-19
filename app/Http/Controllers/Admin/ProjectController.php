@@ -16,8 +16,18 @@ class ProjectController extends Controller
     public function index()
     {
         $projects = Project::all();
+        $direction = 'asc';
+        $active_order = 'id';
 
-        return view('admin.project.index', compact('projects'));
+        return view('admin.project.index', compact('projects', 'direction', 'active_order'));
+    }
+
+    public function orderby($column, $direction)
+    {
+        $direction = $direction == 'desc' ? 'asc' : 'desc';
+        $projects = Project::orderBy($column, $direction)->get();
+        $active_order = $column;
+        return view('admin.project.index', compact('projects', 'direction', 'active_order'));
     }
 
     /**
@@ -41,9 +51,12 @@ class ProjectController extends Controller
         $form_data = $request->all();
         $form_data['slug'] = Project::generate_slug($form_data['name']);
 
-        $new_project = new Project();
-        $new_project->fill($form_data);
-        $new_project->save();
+        // $new_project = new Project();
+        // $new_project->fill($form_data);
+        // $new_project->save();
+
+        // Scrittura alternativa
+        $new_project = Project::create($form_data);
 
         return redirect(route('admin.projects.show', $new_project->slug));
     }
