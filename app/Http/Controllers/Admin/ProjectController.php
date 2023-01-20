@@ -6,6 +6,7 @@ use App\Models\Project;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\ProjectRequest;
+use Illuminate\Support\Facades\Storage;
 
 use function PHPUnit\Framework\isNull;
 
@@ -59,6 +60,12 @@ class ProjectController extends Controller
     public function store(ProjectRequest $request)
     {
         $form_data = $request->all();
+
+        if(array_key_exists('cover_image', $form_data)){
+            $form_data['image_original_name'] = $request->file('cover_image')->getClientOriginalName();
+            $form_data['cover_image'] = Storage::put('uploads', $form_data['cover_image']);
+        }
+
         $form_data['slug'] = Project::generate_slug($form_data['name']);
 
         // $new_project = new Project();
@@ -68,7 +75,7 @@ class ProjectController extends Controller
         // Scrittura alternativa
         $new_project = Project::create($form_data);
 
-        return redirect(route('admin.projects.show', $new_project->slug))->with('created', $new_project->name . 'has been created successfully!');
+        return redirect(route('admin.projects.show', $new_project->slug))->with('created', $new_project->name . ' has been created successfully!');
     }
 
     /**
@@ -133,6 +140,6 @@ class ProjectController extends Controller
     {
         $project->delete();
 
-        return redirect()->route('admin.projects.index')->with('deleted', $project->name . 'has been deleted successfully!');
+        return redirect()->route('admin.projects.index')->with('deleted', $project->name . ' has been deleted successfully!');
     }
 }

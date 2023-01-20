@@ -19,7 +19,8 @@ return new class extends Migration
             $table->string('slug', 132)->unique();
             $table->string('client_name', 64);
             $table->text('summary');
-            $table->string('cover_image')->nullable()->default('https://cdn1.iconfinder.com/data/icons/images-image-files-1/24/photo_photography_image_picture_no_disable-512.png');
+            $table->string('cover_image')->nullable();
+            $table->string('image_original_name')->nullable();
             $table->timestamps();
         });
     }

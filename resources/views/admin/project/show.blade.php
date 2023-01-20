@@ -17,10 +17,13 @@
 
     <h3><strong>Name:</strong> {{ $project->name }}</h3>
     <h3><strong>Client Name:</strong> {{ $project->client_name }}</h3>
-    <div class="text-center my-5">
-        <img src="{{ $project->cover_image }}" alt="{{ $project->name }}">
-    </div>
-    <p class="fs-4"><strong class="fs-3">Summary: </strong>{{ $project->summary }}</p>
+    @if ($project->cover_image)
+        <div class="text-center my-5">
+            <img src="{{ asset('storage/' . $project->cover_image) }}" alt="{{ $project->image_original_name }}" width="50%">
+            <p><i>{{ $project->image_original_name }}</i></p>
+        </div>
+    @endif
+    <p class="fs-4"><strong class="fs-3">Summary: </strong>{!! $project->summary !!}</p>
     <hr class="mt-5">
     <h5>Created at: {{ $project->created_at }}</h5>
     <h5>Last Update: {{ $project->updated_at }}</h5>
