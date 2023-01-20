@@ -34,7 +34,7 @@
                         <td>{{ $project->client_name }}</td>
                         <td>
                             <div style="height: 50px; overflow:auto;">
-                                {{ $project->summary }}
+                                {!! $project->summary !!}
                             </div>
                         </td>
                         <td>
