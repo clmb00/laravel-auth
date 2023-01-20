@@ -53,10 +53,9 @@
 
                 <div class="card-body">
                     <ul>
-                        <li>Order By - Search</li>
                         <li>Bootstrap confermation delete as partial</li>
                         <li>upload image</li>
-                        <li>pagination</li>
+                        <li>style pagination</li>
                         <li>edit to do</li>
                     </ul>
                 </div>
