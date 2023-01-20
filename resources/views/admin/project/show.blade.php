@@ -22,11 +22,7 @@
             <a class="btn btn-warning w-100" href="{{ route('admin.projects.edit', $project->slug) }}"><i class="fa-solid fa-file-pen"></i> Edit</a>
         </div>
         <div class="col-4">
-            <form action="{{ route('admin.projects.destroy', $project) }}" method="POST" onsubmit="return confirm('Confermi l\'eliminazione di: {{$project->name}}')">
-                @csrf
-                @method('DELETE')
-                <button class="btn btn-danger w-100" type="submit" title="delete"><i class="fa-solid fa-trash"></i> Cancel</button>
-            </form>
+            @include('layouts.admin.partials.modal-delete')
         </div>
     </div>
 </div>
