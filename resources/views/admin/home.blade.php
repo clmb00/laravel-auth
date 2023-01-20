@@ -56,7 +56,6 @@
                         <li>Order By - Search</li>
                         <li>Bootstrap confermation delete as partial</li>
                         <li>upload image</li>
-                        <li>breadcrumbs as partial</li>
                         <li>pagination</li>
                         <li>edit to do</li>
                     </ul>

@@ -54,5 +54,7 @@
                 @endforelse
             </tbody>
           </table>
+
+          {{ $projects->links() }}
     </div>
 @endsection

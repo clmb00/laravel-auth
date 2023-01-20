@@ -21,9 +21,9 @@ class ProjectController extends Controller
 
         if(isset($_GET['search'])){
             $search = $_GET['search'];
-            $projects = Project::where('name', 'like', '%' . $search . '%')->get();
+            $projects = Project::where('name', 'like', '%' . $search . '%')->paginate(10)->get();
         } else {
-            $projects = Project::all();
+            $projects = Project::paginate(10);
         }
 
         $direction = 'asc';
@@ -35,7 +35,7 @@ class ProjectController extends Controller
     public function orderby($column, $direction)
     {
         $direction = $direction == 'desc' ? 'asc' : 'desc';
-        $projects = Project::orderBy($column, $direction)->get();
+        $projects = Project::orderBy($column, $direction)->paginate(10)->get();
         $active_order = $column;
         return view('admin.project.index', compact('projects', 'direction', 'active_order'));
     }
