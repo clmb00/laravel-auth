@@ -1,4 +1,4 @@
-<button type="button" class="btn btn-danger w-100" data-bs-toggle="modal" data-bs-target="#modal{{$project->id}}">
+<button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#modal{{$project->id}}">
     <i class="fa-solid fa-trash"></i>
 </button>
 

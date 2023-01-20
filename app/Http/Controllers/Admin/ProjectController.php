@@ -21,9 +21,9 @@ class ProjectController extends Controller
 
         if(isset($_GET['search'])){
             $search = $_GET['search'];
-            $projects = Project::where('name', 'like', '%' . $search . '%')->paginate(10)->get();
+            $projects = Project::where('name', 'like', '%' . $search . '%')->get();
         } else {
-            $projects = Project::paginate(10);
+            $projects = Project::all();
         }
 
         $direction = 'asc';
@@ -35,7 +35,7 @@ class ProjectController extends Controller
     public function orderby($column, $direction)
     {
         $direction = $direction == 'desc' ? 'asc' : 'desc';
-        $projects = Project::orderBy($column, $direction)->paginate(10)->get();
+        $projects = Project::orderBy($column, $direction)->get();
         $active_order = $column;
         return view('admin.project.index', compact('projects', 'direction', 'active_order'));
     }
@@ -68,7 +68,7 @@ class ProjectController extends Controller
         // Scrittura alternativa
         $new_project = Project::create($form_data);
 
-        return redirect(route('admin.projects.show', $new_project->slug));
+        return redirect(route('admin.projects.show', $new_project->slug))->with('created', $new_project->name . 'has been created successfully!');
     }
 
     /**
@@ -118,7 +118,9 @@ class ProjectController extends Controller
 
         $project->update($form_data);
 
-        return view('admin.project.show', compact('project'));
+        $updated = $project->name . ' has been updated successfully!';
+
+        return view('admin.project.show', compact('project', 'updated'));
     }
 
     /**
@@ -131,6 +133,6 @@ class ProjectController extends Controller
     {
         $project->delete();
 
-        return redirect()->route('admin.projects.index');
+        return redirect()->route('admin.projects.index')->with('deleted', $project->name . 'has been deleted successfully!');
     }
 }

@@ -3,6 +3,18 @@
 @section('content')
 <div class="container-fluid px-5">
 
+    @if(isset($updated) && !empty('updated'))
+            <div class="alert alert-warning" role="alert">
+                {{ $updated }}
+            </div>
+    @endif
+
+    @if(session('created'))
+            <div class="alert alert-success" role="alert">
+                {{ session('created') }}
+            </div>
+    @endif
+
     <h3><strong>Name:</strong> {{ $project->name }}</h3>
     <h3><strong>Client Name:</strong> {{ $project->client_name }}</h3>
     <div class="text-center my-5">
@@ -14,12 +26,12 @@
     <h5>Last Update: {{ $project->updated_at }}</h5>
     <h5>Slug: {{ $project->slug }}</h5>
     <h5>Id: {{ $project->id }}</h5>
-    <div class="row mt-3 container mx-auto">
+    <div class="row mt-3 container mx-auto down_button_show">
         <div class="col-4">
-            <a class="btn btn-primary w-100" href="{{ route('admin.projects.index') }}"><i class="fa-solid fa-left-long"></i> Back</a>
+            <a class="btn btn-primary" href="{{ route('admin.projects.index') }}"><i class="fa-solid fa-left-long"></i> Back</a>
         </div>
         <div class="col-4">
-            <a class="btn btn-warning w-100" href="{{ route('admin.projects.edit', $project->slug) }}"><i class="fa-solid fa-file-pen"></i> Edit</a>
+            <a class="btn btn-warning" href="{{ route('admin.projects.edit', $project->slug) }}"><i class="fa-solid fa-file-pen"></i> Edit</a>
         </div>
         <div class="col-4">
             @include('layouts.admin.partials.modal-delete')

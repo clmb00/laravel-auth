@@ -53,9 +53,7 @@
 
                 <div class="card-body">
                     <ul>
-                        <li>Bootstrap confermation delete as partial</li>
                         <li>upload image</li>
-                        <li>style pagination</li>
                         <li>edit to do</li>
                     </ul>
                 </div>

@@ -4,6 +4,12 @@
     <div class="container-fluid px-5">
         <h3 class="mb-4">Projects</h3>
 
+        @if(session('deleted'))
+            <div class="alert alert-success" role="alert">
+                {{ session('deleted') }}
+            </div>
+        @endif
+
         <table class="table table-striped table-hover table-bordered" style="border-color:rgba(71, 37, 95, 0.4);">
             <thead class="text-white" style="background-color: rgba(71, 37, 95, 0.6);">
               <tr>
@@ -47,11 +53,11 @@
                         </td>
                     </tr>
                 @empty
-                    <h5>No Projects</h5>
+                    <h5>No Projects Found</h5>
                 @endforelse
             </tbody>
           </table>
 
-          {{ $projects->links() }}
+          {{-- {{ $projects->links() }} --}}
     </div>
 @endsection
