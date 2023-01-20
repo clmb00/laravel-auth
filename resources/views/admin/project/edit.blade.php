@@ -36,6 +36,15 @@
                 @enderror
             </div>
             <div class="mb-3">
+                <label for="cover_image" class="form-label">Cover image URL</label>
+                <input type="text" class="form-control @error('cover_image') is-invalid @enderror" id="cover_image" name="cover_image" value="{{old('cover_image', $project->cover_image)}}">
+                @error('cover_image')
+                    <div class="invalid-feedback">
+                        {{$message}}
+                    </div>
+                @enderror
+            </div>
+            <div class="mb-3">
                 <label for="summary" class="form-label">Summary</label>
                 <textarea id="summary" name="summary" class="@error('summary') is-invalid @enderror"></textarea>
                 @error('summary')
@@ -45,20 +54,14 @@
                 @enderror
                 <p>{{old('summary', $project->summary)}}"</p>
             </div>
-            <div class="mb-3">
-                <label for="cover_image" class="form-label">Cover image URL</label>
-                <input type="text" class="form-control @error('cover_image') is-invalid @enderror" id="cover_image" name="cover_image" value="{{old('cover_image', $project->cover_image)}}">
-                @error('cover_image')
-                    <div class="invalid-feedback">
-                        {{$message}}
-                    </div>
-                @enderror
-            </div>
             <div class="row mt-5 container mx-auto">
-                <div class="col-6">
+                <div class="col-4">
                     <a class="btn btn-primary w-100" href="{{ route('admin.projects.index') }}"><i class="fa-solid fa-left-long"></i> Back</a>
                 </div>
-                <div class="col-6">
+                <div class="col-4">
+                    <button type="reset" form="saveForm" class="btn btn-warning w-100"><i class="fa-solid fa-trash-can"></i> Reset</button>
+                </div>
+                <div class="col-4">
                     <button type="submit" form="saveForm" class="btn btn-success w-100"><i class="fa-solid fa-file-pen"></i> Done</button>
                 </div>
             </div>

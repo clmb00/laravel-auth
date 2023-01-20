@@ -35,6 +35,15 @@
                 @enderror
             </div>
             <div class="mb-3">
+                <label for="cover_image" class="form-label">Cover image URL</label>
+                <input type="text" class="form-control @error('cover_image') is-invalid @enderror" id="cover_image" name="cover_image" value="{{old('cover_image')}}">
+                @error('cover_image')
+                    <div class="invalid-feedback">
+                        {{$message}}
+                    </div>
+                @enderror
+            </div>
+            <div class="mb-3">
                 <label for="summary" class="form-label">Summary</label>
                 <textarea id="summary" name="summary" class="@error('summary') is-invalid @enderror"></textarea>
                 @error('summary')
@@ -43,15 +52,6 @@
                     </div>
                 @enderror
                 <p>value="{{old('summary')}}"</p>
-            </div>
-            <div class="mb-3">
-                <label for="cover_image" class="form-label">Cover image URL</label>
-                <input type="text" class="form-control @error('cover_image') is-invalid @enderror" id="cover_image" name="cover_image" value="{{old('cover_image')}}">
-                @error('cover_image')
-                    <div class="invalid-feedback">
-                        {{$message}}
-                    </div>
-                @enderror
             </div>
             <div class="row mt-5 container mx-auto">
                 <div class="col-4">
