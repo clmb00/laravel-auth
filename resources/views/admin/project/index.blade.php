@@ -29,7 +29,7 @@
             <tbody class="table-hover">
                 @forelse ($projects as $project)
                     <tr class="rows">
-                        <td style="min-width: 55px">{{ $project->id }}</td>
+                        <td style="min-width: 60px">{{ $project->id }}</td>
                         <td>{{ $project->name }}</td>
                         <td>{{ $project->client_name }}</td>
                         <td>
