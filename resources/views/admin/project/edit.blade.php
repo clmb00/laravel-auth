@@ -19,7 +19,7 @@
             @method('PUT')
             <div class="mb-3">
                 <label for="name" class="form-label">Project name</label>
-                <input type="text" class="form-control @error('name') is-invalid @enderror" id="name" name="name" value="{{old('name', $project->name)}}">
+                <input type="text" class="form-control @error('name') is-invalid @enderror" maxlength="128" id="name" name="name" value="{{old('name', $project->name)}}">
                 @error('name')
                     <div class="invalid-feedback">
                         {{$message}}
@@ -28,7 +28,7 @@
             </div>
             <div class="mb-3">
                 <label for="client_name" class="form-label">Client name</label>
-                <input type="text" class="form-control @error('client_name') is-invalid @enderror" id="client_name" name="client_name" value="{{old('client_name', $project->client_name)}}">
+                <input type="text" class="form-control @error('client_name') is-invalid @enderror" maxlength="64" id="client_name" name="client_name" value="{{old('client_name', $project->client_name)}}">
                 @error('client_name')
                     <div class="invalid-feedback">
                         {{$message}}
