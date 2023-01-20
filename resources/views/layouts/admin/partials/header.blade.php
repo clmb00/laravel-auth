@@ -34,8 +34,12 @@
 
                     @else
 
+                        <form action="{{ url('/admin/projects') }}" class="d-flex nav-item" method="GET">
+                            <input type="text" class="form-control search_input me-1" name="search" id="search" placeholder="Search..">
+                            <button class="btn btn-light btn-sm nav-link me-4" style="--bs-btn-padding-y: .125rem; --bs-btn-padding-x: .25rem; --bs-btn-font-size: 1rem;" href="{{ url('/admin/profile') }}"><i class="fa-solid fa-search"></i></button>
+                        </form>
                         <li class="nav-item btn btn-light btn-sm me-2" style="--bs-btn-padding-y: .125rem; --bs-btn-padding-x: .25rem; --bs-btn-font-size: 1rem;">
-                            <a class="nav-link" href="{{ url('/admin/profile') }}"><i class="fa-solid fa-bell"></i></i> Notifications</a>
+                            <a class="nav-link" href="{{ url('/admin/profile') }}"><i class="fa-solid fa-bell"></i> Notifications</a>
                         </li>
                         <li class="nav-item btn btn-light btn-sm" style="--bs-btn-padding-y: .125rem; --bs-btn-padding-x: .25rem; --bs-btn-font-size: 1rem;">
                             <a class="nav-link" href="{{url('/') }}"><i class="fa-solid fa-globe"></i> View Public Page</a>

@@ -7,6 +7,8 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\ProjectRequest;
 
+use function PHPUnit\Framework\isNull;
+
 class ProjectController extends Controller
 {
     /**
@@ -16,7 +18,14 @@ class ProjectController extends Controller
      */
     public function index()
     {
-        $projects = Project::all();
+
+        if(isset($_GET['search'])){
+            $search = $_GET['search'];
+            $projects = Project::where('name', 'like', '%' . $search . '%')->get();
+        } else {
+            $projects = Project::all();
+        }
+
         $direction = 'asc';
         $active_order = 'id';
 

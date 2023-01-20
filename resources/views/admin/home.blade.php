@@ -53,8 +53,6 @@
 
                 <div class="card-body">
                     <ul>
-                        <li>Validation client-side</li>
-                        <li>Search by name</li>
                         <li>Order By - Search</li>
                         <li>Bootstrap confermation delete as partial</li>
                         <li>upload image</li>
