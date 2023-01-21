@@ -36,12 +36,15 @@
             </div>
             <div class="mb-3">
                 <label for="cover_image" class="form-label">Cover image</label>
-                <input type="file" class="form-control @error('cover_image') is-invalid @enderror" id="cover_image" name="cover_image" value="{{old('cover_image')}}">
+                <input type="file" class="form-control @error('cover_image') is-invalid @enderror" id="cover_image" name="cover_image" value="{{old('cover_image')}}" onchange="showImage(event)">
                 @error('cover_image')
-                    <div class="invalid-feedback">
-                        {{$message}}
-                    </div>
+                <div class="invalid-feedback">
+                    {{$message}}
+                </div>
                 @enderror
+                <div class="text-center">
+                    <img id="output-image" class="mt-4 preview_image" alt="">
+                </div>
             </div>
             <div class="mb-3">
                 <label for="summary" class="form-label">Summary</label>
@@ -79,5 +82,10 @@
            .catch( error => {
                 console.error( error );
             } );
+
+        function showImage(event){
+            const tagImage = document.getElementById('output-image');
+            tagImage.src = URL.createObjectURL(event.target.files[0]);
+        }
     </script>
 @endsection
