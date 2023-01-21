@@ -123,6 +123,15 @@ class ProjectController extends Controller
             $form_data['slug'] = $project->slug;
         }
 
+        if(array_key_exists('cover_image', $form_data)){
+            if($project->image){
+                Storage::disk('public')->delete($project->cover_image);
+            }
+
+            $form_data['image_original_name'] = $request->file('cover_image')->getClientOriginalName();
+            $form_data['cover_image'] = Storage::put('uploads', $form_data['cover_image']);
+        }
+
         $project->update($form_data);
 
         $updated = $project->name . ' has been updated successfully!';
@@ -138,6 +147,10 @@ class ProjectController extends Controller
      */
     public function destroy(Project $project)
     {
+        if($project->cover_image){
+            Storage::disk('public')->delete($project->cover_image);
+        }
+
         $project->delete();
 
         return redirect()->route('admin.projects.index')->with('deleted', $project->name . ' has been deleted successfully!');
